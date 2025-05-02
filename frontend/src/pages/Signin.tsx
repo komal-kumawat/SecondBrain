@@ -21,7 +21,7 @@ export function Signin() {
                 localStorage.setItem("token", token); // Store the token
                 alert("Signin successful");
                 console.log(response.data);
-                navigate("/");
+                navigate("/Dashboard");
             } else {
                 alert("Token not received. Try again.");
             }

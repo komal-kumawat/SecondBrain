@@ -35,8 +35,8 @@ export default function Dashboard() {
       style={{ backgroundColor: "whitesmoke" }}
     >
       <SideBar onSectionChange={setActiveSection} />
-      <div className="ml-[250px]">
-        <div className="flex items-center justify-between flex-wrap p-2">
+      <div className="ml-[250px] w-full">
+        <div className="flex items-center justify-between  p-2 gap-4 flex-wrap">
           <div className="text-[30px] font-bold p-2 capitalize">
             {activeSection === "all" ? "All Notes" : activeSection}
           </div>
