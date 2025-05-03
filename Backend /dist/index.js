@@ -29,13 +29,17 @@ app.use((0, cors_1.default)({
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
-const mongoUrl = process.env.MONGO_URL || "mongodb+srv://komalK:komal%40123@atlascluster.fukzabb.mongodb.net/secondBrain";
+const mongoUrl = process.env.MONGO_URL;
+if (!mongoUrl) {
+    throw new Error("MONGO_URL is not defined in .env");
+}
 const JWT_SECRET = process.env.JWT_SECRET || "1234@1234";
 mongoose_1.default.connect(mongoUrl)
     .then(() => {
     console.log("connected to mongoDB successfully ");
+    console.log(mongoUrl);
 }).catch(err => {
-    console.log("error connecting mongodb");
+    console.log("error connecting mongodb" + err);
 });
 app.post("/api/v1/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, password } = req.body;

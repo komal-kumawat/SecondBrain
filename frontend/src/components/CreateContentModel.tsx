@@ -8,7 +8,6 @@ export function CreateContentModel({ open, onClose }: { open: boolean; onClose: 
     const [link, setLink] = useState("");
     const [type, setType] = useState("");
     const [loading, setLoading] = useState(false);
-
     const addContent = async () => {
         setLoading(true);
         try {
@@ -18,7 +17,7 @@ export function CreateContentModel({ open, onClose }: { open: boolean; onClose: 
                 return;
             }
             const response = await axios.post("http://localhost:3000/api/v1/content", {
-                title, link, type
+                title, link, type  
             }, {
                 headers: {
                     authorization: token
@@ -56,6 +55,7 @@ export function CreateContentModel({ open, onClose }: { open: boolean; onClose: 
                     <Input placeholder="Title" onChange={(e) => setTitle(e.target.value)} value={title} />
                     <Input placeholder="Link" onChange={(e) => setLink(e.target.value)} value={link} />
                     <Input placeholder="Type" onChange={(e) => setType(e.target.value)} value={type} />
+
                 </div>
                 <div className="flex justify-center mt-4">
                     <Button variant="primary" text="Submit" size="md" onClick={addContent} loading={loading} />

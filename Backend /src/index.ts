@@ -5,7 +5,6 @@ import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken"
 import cors from "cors";
-
 import { userMiddleware } from "./middleware";
 dotenv.config();
 const app = express();
@@ -17,14 +16,19 @@ app.use(cors({
     credentials: true
 }));
 
-const mongoUrl = process.env.MONGO_URL || "mongodb+srv://komalK:komal%40123@atlascluster.fukzabb.mongodb.net/secondBrain";
+const mongoUrl = process.env.MONGO_URL;
+if (!mongoUrl) {
+    throw new Error("MONGO_URL is not defined in .env");
+  }
+  
+
 const JWT_SECRET = process.env.JWT_SECRET || "1234@1234"
 mongoose.connect(mongoUrl)
     .then(() => {
         console.log("connected to mongoDB successfully ")
     }
     ).catch(err => {
-        console.log("error connecting mongodb")
+        console.log("error connecting mongodb"+err)
     })
 
 app.post("/api/v1/signup", async (req, res) => {

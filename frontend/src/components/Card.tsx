@@ -62,7 +62,7 @@ export const Card = (props: cardProps) => {
 
 
     return (
-        <div className="m-6 p-8 bg-white rounded-lg shadow-md outline-slate-200 border-2 flex flex-col min-w-[250px] ">
+        <div className="m-6 p-8 bg-white rounded-lg shadow-md outline-slate-200 border-2 flex flex-col min-w-[250px]  max-w-fit">
 
             <div>
                 <div className="flex justify-between">
